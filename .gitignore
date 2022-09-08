@@ -1,0 +1,6 @@
+*.aux
+*.dvi
+*.log
+*.out
+*.toc
+*.DS_Store
