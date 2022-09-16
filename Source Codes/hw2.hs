@@ -14,12 +14,11 @@ member n (x:xs)
   | x == n = True
   | otherwise = member n xs
 
-append [] _ = []
-append list_original [] = list_original
-append list_original (x:list_add) = append (list_original ++ [x]) list_add
+append [] list_original = list_original
+append (x:list_add) list_original = x:(append list_add list_original)
 
 revert [] = []
-revert (item:xs) = (revert xs) ++ [item]
+revert (item:xs) = append (revert xs) [item]
 
 less_equal [] [] = True
 less_equal (x:list_one) (y:list_two) = if x <= y
