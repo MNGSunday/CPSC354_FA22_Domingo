@@ -15,9 +15,11 @@ data II = II NN NN
 
 -- Positive integers (to avoid dividing by 0)
 data PP = I | T PP
+  deriving (Eq,Show) -- for equality and printing
 
 -- Rational numbers
 data QQ =  QQ II PP
+  deriving (Eq,Show) -- for equality and printing
 
 ------------------------
 -- Arithmetic on the  VM
@@ -28,7 +30,7 @@ data QQ =  QQ II PP
 ----------------
 -- add positive numbers
 addP :: PP -> PP -> PP
-addP I m = m
+addP I m = T (m)
 addP (T n) m = T (addP n m)
 
 -- multiply positive numbers
@@ -75,3 +77,6 @@ multN (S n) m = addN (multN n m) m
 main = do
     print $ addN (S (S O)) (S O) -- S (S (S O))
     print $ multN (S (S O)) (S (S (S O))) -- S (S (S (S (S (S O)))))
+
+    print $ addP (T (T I)) (T I) -- T (T (T (T I)))
+    print $ multP (T (T I)) (T (T (T I))) -- T (T (T (T (T (T I)))))
