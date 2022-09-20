@@ -26,7 +26,15 @@ data QQ =  QQ II PP
 ----------------
 -- PP Arithmetic
 ----------------
+-- add positive numbers
+addP :: PP -> PP -> PP
+addP I m = m
+addP (T n) m = T (addP n m)
 
+-- multiply positive numbers
+multP :: PP -> PP -> PP
+multP I m = m
+multP (T n) m = addP (multP n m) m
 ----------------
 -- NN Arithmetic
 ----------------
