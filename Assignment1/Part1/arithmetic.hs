@@ -37,6 +37,13 @@ addP (T n) m = T (addP n m)
 multP :: PP -> PP -> PP
 multP I m = m
 multP (T n) m = addP (multP n m) m
+
+-- convert numbers of type PP to numbers of type NN
+-- nn_pp :: PP -> NN
+
+-- convert numbers of type PP to numbers of type II
+-- ii_pp :: PP -> II
+
 ----------------
 -- NN Arithmetic
 ----------------
@@ -51,10 +58,24 @@ multN :: NN -> NN -> NN
 multN O m = O
 multN (S n) m = addN (multN n m) m
 
+-- divide natural numbers
+-- divN :: NN -> PP -> NN
+-- divN O PP = O
 ----------------
 -- II Arithmetic
 ----------------
 
+-- addition
+addI :: II -> II -> II
+addI (II ni nj) (II mi mj) = (II (addN ni mi) (addN nj mj))
+
+-- multiplication
+multI :: II -> II -> II
+multI (II ni nj) (II mi mj) = (II (multN ni mi) (multN nj mj))
+
+-- negation
+multI :: II -> II
+multI (II ni nj) = (II (nj ni))
 
 ----------------
 -- QQ Arithmetic
@@ -70,7 +91,6 @@ multN (S n) m = addN (multN n m) m
 -- Converting between VM-numbers and Haskell-numbers
 ----------------------------------------------------
 
-
 ----------
 -- Testing
 ----------
@@ -79,4 +99,4 @@ main = do
     print $ multN (S (S O)) (S (S (S O))) -- S (S (S (S (S (S O)))))
 
     print $ addP (T (T I)) (T I) -- T (T (T (T I)))
-    print $ multP (T (T I)) (T (T (T I))) -- T (T (T (T (T (T I)))))
+    print $ multP (T (T I)) (T (T (T I)))
