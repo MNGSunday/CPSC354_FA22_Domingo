@@ -11,7 +11,7 @@ data NN = O | S NN
 
 -- Integers
 data II = II NN NN
-  deriving (Eq,Show) -- for equality and printing
+  deriving Show -- define equality below
 
 -- Positive integers (to avoid dividing by 0)
 data PP = I | T PP
@@ -39,10 +39,14 @@ multP I m = m
 multP (T n) m = addP (multP n m) m
 
 -- convert numbers of type PP to numbers of type NN
--- nn_pp :: PP -> NN
+nn_pp :: PP -> NN
+nn_pp I = (S O)
+nn_pp (T p) = S (nn_pp p)
 
 -- convert numbers of type PP to numbers of type II
 -- ii_pp :: PP -> II
+ii_pp I = II (nn_pp I) O
+ii_pp (T p) = II (nn_pp (T p)) O
 
 ----------------
 -- NN Arithmetic
@@ -57,6 +61,20 @@ addN (S n) m = S (addN n m)
 multN :: NN -> NN -> NN
 multN O m = O
 multN (S n) m = addN (multN n m) m
+
+-- subtract natural numbers
+subN :: NN -> NN -> NN
+subN O O = O
+subN O n = O
+subN n O = n
+subN (S n) (S m) = (subN n m)
+
+-- "less than" for natural numbers
+lessN :: NN -> NN -> NN
+lessN O O = (S O)
+lessN O n = (S O)
+lessN n O = O
+lessN n m = (lessN (subN n m) m)
 
 -- divide natural numbers
 -- divN :: NN -> PP -> NN
@@ -74,13 +92,16 @@ multI :: II -> II -> II
 multI (II ni nj) (II mi mj) = (II (multN ni mi) (multN nj mj))
 
 -- negation
-multI :: II -> II
-multI (II ni nj) = (II (nj ni))
+negI :: II -> II
+negI (II ni nj) = II nj ni
 
 ----------------
 -- QQ Arithmetic
 ----------------
 
+-- addition
+-- addQ :: QQ -> QQ -> QQ
+-- addQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (addI (multI (ni mi) (ii_pp pi)) (multI (nj mj) (pi O))) (multP pi pj))
 
 ----------------
 -- Normalisation
