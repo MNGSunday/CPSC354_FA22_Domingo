@@ -16,6 +16,8 @@
     }
 
 \usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{ {./Report Images/} }
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -64,6 +66,7 @@
 \subsection{Week 2}
 \hspace{10mm} During the second week of Programming Languages, the class lectures went more into depth regarding techniques in how to use \textbf{Recursion} to solve problems, as well as introduced the concept of creating an \textit{Interpreter} in Haskell.
 \subsection{Week 3} During the third week of Programming Languages, the class lectures went over the concept of Context and Parse Trees in relation to programming a calculator interpreter.
+\subsection{Week 4} During the fourth week of Programming Languages, the lectures covered the concept of Lambda Calculus, specifically about its syntax and how to parse Lambda equations.
 \section{Homework}\label{homework}
 \subsection{Week 1}
 
@@ -292,5 +295,45 @@ Movement solution for Towers of Hanoi with n Disks = 5:
 0->2
 \end{lstlisting}
 Within the computation for the Towers of Hanoi with \textit{n Disks = 5}, the word "Hanoi" appears a total of \textbf{31 times}. This can be expressed with the following equation:
-$ Hanoi = 2^N - 1$.
+$ Hanoi = 2^N - 1$, where \textit{N} is the number of disks from the initial tower.
+
+\subsection{Week 4}
+The Abstract Syntax Tree of $2 + 1$ is:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week4_1.jpg}
+\begin{lstlisting}
+Plus (Num 2) (Num 1)
+\end{lstlisting}
+
+
+The Abstract Syntax Tree of $1 + 2 * 3$ is:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week4_2.jpg}
+\begin{lstlisting}
+Plus (Num 1) (Times (Num 2) (Num 3))
+\end{lstlisting}
+
+The Abstract Syntax Tree of $1 + (2 * 3)$ is:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week4_3.jpg}
+\begin{lstlisting}
+Plus (Num 1) (Times (Num 2) (Num 3))
+\end{lstlisting}
+
+The Abstract Syntax Tree of $(1 + 2) * 3$ is:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week4_4.jpg}
+\begin{lstlisting}
+Times (Plus (Num 1) (Num 2)) (Num 3)
+\end{lstlisting}
+
+The Abstract Syntax Tree of $1 + 2 * 3 + 4 * 5 + 6$ is:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week4_5.jpg}
+\begin{lstlisting}
+Plus (Plus (Plus (Num 1) (Times (Num 2) (Num 3))) (Times (Num 4) (Num 5))) (Num 6)
+\end{lstlisting}
+
+
+The abstract syntax tree of $1+2+3$ would be identical to the one of $(1+2)+3$ as the compiler would calculate from left to right as there are no other higher-order operations aside from addition.
 \end{document}
