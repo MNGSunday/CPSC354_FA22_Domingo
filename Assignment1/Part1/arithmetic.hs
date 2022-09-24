@@ -149,7 +149,11 @@ ii_int :: Integer -> II
 ii_int 0 = (II O O)
 ii_int x = (II (nn_int x) O)
 
--- int_ii :: II -> Integer
+int_ii :: II -> Integer
+int_ii (II O O) = 0
+int_ii (II n O) = (int_nn n)
+int_ii (II O m) = (-1) * (int_nn m)
+int_ii (II n m) = (int_nn n) - (int_nn m)
 
 -- Precondition: Inputs are positive
 -- pp_int :: Integer -> PP
