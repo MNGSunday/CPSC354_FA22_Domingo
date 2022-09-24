@@ -137,7 +137,9 @@ multQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (multI (II ni mi) (II nj mj)) 
 ----------------------------------------------------
 
 -- Precondition: Inputs are non-negative
--- nn_int :: Integer -> NN
+nn_int :: Integer -> NN
+nn_int 0 = O
+nn_int x = S (nn_int (x - 1))
 
 -- int_nn :: NN->Integer
 
