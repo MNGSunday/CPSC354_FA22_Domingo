@@ -19,7 +19,7 @@ data PP = I | T PP
 
 -- Rational numbers
 data QQ =  QQ II PP
-  -- deriving Show -- define equality below
+  deriving Show -- define equality below
 
 ------------------------
 -- Arithmetic on the  VM
@@ -119,7 +119,8 @@ addQ :: QQ -> QQ -> QQ
 addQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (addI ((multI (II ni mi) (II (nn_pp pi) O))) ((multI (II nj mj) (II (nn_pp pi) O)))) (multP pi pj))
 
 -- Multiplication: (a/b)*(c/d)=(ac)/(bd)
--- multQ :: QQ -> QQ -> QQ
+multQ :: QQ -> QQ -> QQ
+multQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (multI (II ni mi) (II nj mj)) (multP pi pj))
 
 -- Equality of fractions
 -- instance Eq QQ where
