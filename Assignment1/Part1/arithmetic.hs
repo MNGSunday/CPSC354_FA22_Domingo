@@ -19,7 +19,7 @@ data PP = I | T PP
 
 -- Rational numbers
 data QQ =  QQ II PP
-  deriving (Eq,Show) -- for equality and printing
+  -- deriving Show -- define equality below
 
 ------------------------
 -- Arithmetic on the  VM
@@ -74,11 +74,22 @@ lessN :: NN -> NN -> NN
 lessN O O = (S O)
 lessN O n = (S O)
 lessN n O = O
-lessN n m = (lessN (subN n m) m)
+lessN n m = lessN (subN n m) m
 
 -- divide natural numbers
--- divN :: NN -> PP -> NN
--- divN O PP = O
+divN :: NN -> PP -> NN
+divN O p = O
+divN n p
+  | lessN (subN n (nn_pp p)) (nn_pp p) == O = S (divN (subN n (nn_pp p)) p) -- if n is not less than p, recursively run divide with n = n - p
+  | otherwise = O -- if n is less than p, return O
+
+-- modulo/remainder for natural numbers
+modN :: NN -> PP -> NN
+modN O p = O
+modN n p
+  | lessN (subN n (nn_pp p)) (nn_pp p) == O = modN (subN n (nn_pp p)) p -- if n is not less than p, recursively run modulo with n = n - p
+  | otherwise = n -- if n is less than p, then return n
+
 ----------------
 -- II Arithmetic
 ----------------
@@ -95,22 +106,56 @@ multI (II ni nj) (II mi mj) = (II (multN ni mi) (multN nj mj))
 negI :: II -> II
 negI (II ni nj) = II nj ni
 
+-- Equality of integers
+-- instance Eq II where
+  -- (II a b) == (II c d) = <insert your code here>
+
 ----------------
 -- QQ Arithmetic
 ----------------
 
 -- addition
--- addQ :: QQ -> QQ -> QQ
--- addQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (addI (multI (ni mi) (ii_pp pi)) (multI (nj mj) (pi O))) (multP pi pj))
+addQ :: QQ -> QQ -> QQ
+addQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (addI ((multI (II ni mi) (II (nn_pp pi) O))) ((multI (II nj mj) (II (nn_pp pi) O)))) (multP pi pj))
+
+-- Multiplication: (a/b)*(c/d)=(ac)/(bd)
+-- multQ :: QQ -> QQ -> QQ
+
+-- Equality of fractions
+-- instance Eq QQ where
+  -- (QQ a b) == (QQ c d) = <insert your code here>
 
 ----------------
 -- Normalisation
 ----------------
 
+-- normalizeI :: II -> II
 
 ----------------------------------------------------
 -- Converting between VM-numbers and Haskell-numbers
 ----------------------------------------------------
+
+-- Precondition: Inputs are non-negative
+-- nn_int :: Integer -> NN
+
+-- int_nn :: NN->Integer
+
+-- ii_int :: Integer -> II
+
+-- int_ii :: II -> Integer
+
+-- Precondition: Inputs are positive
+-- pp_int :: Integer -> PP
+
+-- int_pp :: PP->Integer
+
+-- float_qq :: QQ -> Float
+
+------------------------------
+-- Normalisation by Evaluation
+------------------------------
+
+--nbe :: II -> II
 
 ----------
 -- Testing
