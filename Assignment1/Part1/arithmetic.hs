@@ -145,7 +145,9 @@ int_nn :: NN->Integer
 int_nn O = 0
 int_nn (S n) = 1 + (int_nn n)
 
--- ii_int :: Integer -> II
+ii_int :: Integer -> II
+ii_int 0 = (II O O)
+ii_int x = (II (nn_int x) O)
 
 -- int_ii :: II -> Integer
 
