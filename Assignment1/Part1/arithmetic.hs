@@ -141,7 +141,9 @@ nn_int :: Integer -> NN
 nn_int 0 = O
 nn_int x = S (nn_int (x - 1))
 
--- int_nn :: NN->Integer
+int_nn :: NN->Integer
+int_nn O = 0
+int_nn (S n) = 1 + (int_nn n)
 
 -- ii_int :: Integer -> II
 
