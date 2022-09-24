@@ -156,9 +156,13 @@ int_ii (II O m) = (-1) * (int_nn m)
 int_ii (II n m) = (int_nn n) - (int_nn m)
 
 -- Precondition: Inputs are positive
--- pp_int :: Integer -> PP
+pp_int :: Integer -> PP
+pp_int 1 = I
+pp_int x = T (pp_int (x - 1))
 
--- int_pp :: PP->Integer
+int_pp :: PP->Integer
+int_pp I = 1
+int_pp (T m) = 1 + (int_pp m)
 
 -- float_qq :: QQ -> Float
 
