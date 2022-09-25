@@ -130,7 +130,10 @@ multQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (multI (II ni mi) (II nj mj)) 
 -- Normalisation
 ----------------
 
--- normalizeI :: II -> II
+normalizeI :: II -> II
+normalizeI (II ni O) = II ni O
+normalizeI (II O ni) = II O ni
+normalizeI (II ni nj) = II (subN ni nj) (subN nj ni)
 
 ----------------------------------------------------
 -- Converting between VM-numbers and Haskell-numbers
@@ -165,6 +168,7 @@ int_pp I = 1
 int_pp (T m) = 1 + (int_pp m)
 
 -- float_qq :: QQ -> Float
+-- float_qq (QQ (II ni nj) p) = (((int_ii (II ni nj)) :: Float) / ( (int_pp p) :: Float) )
 
 ------------------------------
 -- Normalisation by Evaluation
