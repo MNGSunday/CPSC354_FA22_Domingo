@@ -133,7 +133,7 @@ multQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (multI (II ni mi) (II nj mj)) 
 normalizeI :: II -> II
 normalizeI (II ni O) = II ni O
 normalizeI (II O ni) = II O ni
-normalizeI (II ni nj) = II (subN ni nj) (subN nj ni)
+normalizeI (II ni nj) = II (subN ni nj) (subN nj ni) --reduce larger number to smallest form and smaller number to O
 
 ----------------------------------------------------
 -- Converting between VM-numbers and Haskell-numbers
@@ -174,7 +174,8 @@ int_pp (T m) = 1 + (int_pp m)
 -- Normalisation by Evaluation
 ------------------------------
 
---nbe :: II -> II
+nbe :: II -> II
+nbe (II ni nj) = ii_int (int_ii (II ni nj)) -- convert II input to integer and immediately convert to II
 
 ----------
 -- Testing
