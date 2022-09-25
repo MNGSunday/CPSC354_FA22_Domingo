@@ -107,8 +107,8 @@ negI :: II -> II
 negI (II ni nj) = II nj ni
 
 -- Equality of integers
--- instance Eq II where
-  -- (II a b) == (II c d) = <insert your code here>
+instance Eq II where
+  (II a b) == (II c d) = ((int_ii (II a b)) == (int_ii (II c d)))
 
 ----------------
 -- QQ Arithmetic
