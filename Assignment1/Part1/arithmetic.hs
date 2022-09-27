@@ -1,4 +1,4 @@
--- A Virtual Machine (VM) for Arithmetic (template)
+-- A Virtual Machine (VM) for Arithmetic
 -- Copyright: Alexander Kurz 2022
 
 -----------------------
@@ -123,8 +123,8 @@ multQ :: QQ -> QQ -> QQ
 multQ (QQ (II ni mi) pi) (QQ (II nj mj) pj) = (QQ (multI (II ni mi) (II nj mj)) (multP pi pj))
 
 -- Equality of fractions
--- instance Eq QQ where
-  -- (QQ a b) == (QQ c d) = <insert your code here>
+instance Eq QQ where
+  (QQ a b) == (QQ c d) = ((float_qq (QQ a b)) == (float_qq (QQ c d)))
 
 ----------------
 -- Normalisation
@@ -167,8 +167,8 @@ int_pp :: PP->Integer
 int_pp I = 1
 int_pp (T m) = 1 + (int_pp m)
 
--- float_qq :: QQ -> Float
--- float_qq (QQ (II ni nj) p) = (((int_ii (II ni nj)) :: Float) / ( (int_pp p) :: Float) )
+float_qq :: QQ -> Float
+float_qq (QQ (II ni nj) p) = ((fromIntegral (int_ii (II ni nj))) / (fromIntegral(int_pp p)))
 
 ------------------------------
 -- Normalisation by Evaluation
