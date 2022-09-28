@@ -1,8 +1,8 @@
 Plus. Exp ::= Exp "+" Exp1 ;
 Minus. Exp1 ::= Exp1 "-" Exp2 ;
 Times. Exp2 ::= Exp2 "*" Exp3 ;
-Div. Exp3 ::= Exp3 "Div" Exp4 ;
-Mod. Exp4 ::= Exp4 "%" Exp5 ;
+Div. Exp3 ::= "Divide" Exp3 Exp4 ;
+Mod. Exp4 ::= "Mod" Exp4 Exp5 ;
 Pow. Exp5 ::= Exp5 "^" Exp6 ;
 Root. Exp6 ::= Exp6 "Root" Exp7 ;
 Neg. Exp7 ::= "Neg" Exp7 ;
