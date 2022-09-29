@@ -49,13 +49,13 @@ Computations for functions from Arithmetic.hs:
 		int_ii (negI (II (S (S (S (S (nn_int O))))) O)) =
 		int_ii (negI (II (S (S (S (S (O))))) O)) =
 		int_ii (II O (S (S (S (S (O)))))) =
-		(-1) * (int_nn (S (S (S (S (O)))))) =
-		(-1) * (1 + int_nn (S (S (S (O))))) =
-		(-1) * (2 + int_nn (S (S (O)))) =
-		(-1) * (3 + int_nn (S (O))) =
-		(-1) * (4 + int_nn (O)) =
-		(-1) * (4 + 0) =
-		(-1) * (4) =
+		0 - (int_nn (S (S (S (S (O)))))) =
+		0 - (1 + int_nn (S (S (S (O))))) =
+		0 - (2 + int_nn (S (S (O)))) =
+		0 - (3 + int_nn (S (O))) =
+		0 - (4 + int_nn (O)) =
+		0 - (4 + 0) =
+		0 - (4) =
 		-4
 		
 	subN (nn_int 2) (nn_int 3) =
@@ -83,10 +83,10 @@ Computations for functions from Arithmetic.hs:
 		int_ii (II (subN (S (O)) (S (S (O)))) (subN (S (S (O))) (S (O)))) =
 		int_ii (II (subN (O) (S (O))) (subN (S (O)) (O))) =
 		int_ii (II O (S (O))) =
-		(-1) * (int_nn (S (O))) =
-		(-1) * (1 + int_nn (O)) =
-		(-1) * (1 + 0) =
-		(-1) * (1) =
+		0 - (int_nn (S (O))) =
+		0 - (1 + int_nn (O)) =
+		0 - (1 + 0) =
+		0 - (1) =
 		-1 
 
 
