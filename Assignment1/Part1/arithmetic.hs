@@ -71,7 +71,7 @@ subN (S n) (S m) = (subN n m)
 
 -- "less than" for natural numbers
 lessN :: NN -> NN -> NN
-lessN O O = (S O)
+lessN O O = O -- for divN specifically
 lessN O n = (S O)
 lessN n O = O
 lessN n m = lessN (subN n m) m
