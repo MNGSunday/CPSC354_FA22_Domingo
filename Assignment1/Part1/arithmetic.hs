@@ -80,7 +80,7 @@ lessN n m = lessN (subN n m) m
 divN :: NN -> PP -> NN
 divN O p = O
 divN n p
-  | lessN (subN n (nn_pp p)) (nn_pp p) == O = S (divN (subN n (nn_pp p)) p) -- if n is not less than p, recursively run divide with n = n - p
+  | lessN (subN n (nn_pp p)) (nn_pp p) == O = S (divN (subN n (nn_pp p)) p) -- if n - p is not less than p, recursively run divide with n = n - p
   | otherwise = O -- if n is less than p, return O
 
 -- modulo/remainder for natural numbers
