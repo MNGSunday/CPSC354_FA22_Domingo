@@ -67,6 +67,7 @@
 \hspace{10mm} During the second week of Programming Languages, the class lectures went more into depth regarding techniques in how to use \textbf{Recursion} to solve problems, as well as introduced the concept of creating an \textit{Interpreter} in Haskell.
 \subsection{Week 3} During the third week of Programming Languages, the class lectures went over the concept of Context and Parse Trees in relation to programming a calculator interpreter.
 \subsection{Week 4} During the fourth week of Programming Languages, the lectures covered the concept of Lambda Calculus, specifically about its syntax and how to parse Lambda equations.
+\subsection{Week 5} During the fifth week of Programming Languages, the lectures covered the concept of performing substitution in Lambda Calculus through pen-and-paper, and through an interpreter.
 \section{Homework}\label{homework}
 \subsection{Week 1}
 
@@ -336,4 +337,100 @@ Plus (Plus (Plus (Num 1) (Times (Num 2) (Num 3))) (Times (Num 4) (Num 5))) (Num 
 
 
 The abstract syntax tree of $1+2+3$ would be identical to the one of $(1+2)+3$ as the compiler would calculate from left to right as there are no other higher-order operations aside from addition.
+
+\subsection{Week 5}
+\textbf{Part 1:}
+
+The Linearized Tree for $x$ is:
+\begin{lstlisting}
+x
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_1.jpg}
+
+The Linearized Tree for x x is:
+\begin{lstlisting}
+x x
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_2.jpg}
+
+The Linearized Tree for x y is:
+\begin{lstlisting}
+x y
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_3.jpg}
+
+The Linearized Tree for x y z is:
+\begin{lstlisting}
+x y z
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_4.jpg}
+
+The Linearized Tree for \textbackslash  x.x is:
+\begin{lstlisting}
+\ x . x
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_5.jpg}
+
+The Linearized Tree for \textbackslash x.x x is:
+\begin{lstlisting}
+\ x . x x
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_6.jpg}
+
+The Linearized Tree for (\textbackslash x . (\textbackslash y . x y)) (\textbackslash x.x) z is:
+\begin{lstlisting}
+\ x . \ y . x y (\ x . x)z
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_7.jpg}
+
+The Linearized Tree for (\textbackslash x . \textbackslash y . x y z) a b c is:
+\begin{lstlisting}
+\ x . \ y . x y z a b c
+\end{lstlisting}
+
+Its Abstract Syntax Tree:
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_8.jpg}
+
+\textbf{Part 2:}
+
+Evaluating of Equations:
+\begin{lstlisting}
+  (\x.x) a = a         
+  \x.x a = a           
+  (\x.\y.x) a b = (\y. a) b = a    
+  (\x.\y.y) a b = (\y. y) b = b   
+  (\x.\y.x) a b c = (\y. a) b c = (a) c = a 
+  (\x.\y.y) a b c = (\y. y) b c = (b) c = b 
+  (\x.\y.x) a (b c) = (\y. a) (b c) = a
+  (\x.\y.y) a (b c) = (\y. y) (b c) = b c 
+  (\x.\y.x) (a b) c = (\y. a b) c = a b 
+  (\x.\y.y) (a b) c = (\y. y) c = c
+  (\x.\y.x) (a b c) = (\y. a b c)
+  (\x.\y.y) (a b c) = (\y. y)
+\end{lstlisting}
+
+\includegraphics[width=15cm, height=8cm]{Report Images/week5_9.jpg}
+
 \end{document}
