@@ -166,7 +166,7 @@ member 2 [5,2,6] =
         member 2 [2,6] =          5 != 2
         True                      2 == 2
 \end{lstlisting}
-In the case of \textbf{member 3 [5,2,6]}
+In the case of \textbf{member 3 [5,2,6]}:
 \begin{lstlisting}
 member 3 [5,2,6] =
       member 3 [2,6] =          5 != 3
@@ -435,4 +435,49 @@ Evaluating of Equations:
 
 \includegraphics[width=15cm, height=8cm]{Report Images/week5_9.jpg}
 
+\subsection{Week 6}
+\begin{lstlisting}
+(\exp . \two . \three . exp two three)
+(\m.\n. m n)
+(\f.\x. f (f x))
+(\f.\x. f (f (f x)))
+
+=
+((\m.\n. m n) (\f2.\x2. f2 (f2 x2)) (\f3.\x3. f3 (f3 (f3 x3))))
+=
+((\n. (\f2.\x2. f2 (f2 x2)) n) (\f3.\x3. f3 (f3 (f3 x3))))
+=
+((\f2.\x2. f2 (f2 x2)) (\f3.\x3. f3 (f3 (f3 x3))))
+=
+(\x2. (\f3.\x3. f3 (f3 (f3 x3))) ((\f3.\x3. f3 (f3 (f3 x3))) x2))
+=
+(\x2. (\f3.\x3. f3 (f3 (f3 x3))) (\x3. x2 (x2 (x2 x3))))
+=
+(\x2. (\x3. (\x3. x2 (x2 (x2 x3))) ((\x3. x2 (x2 (x2 x3))) ((\x3. x2 (x2 (x2 x3))) x3))))
+=
+(\x2. (\x3. (\x3. x2 (x2 (x2 x3))) ((\x3. x2 (x2 (x2 x3))) ((x2 (x2 (x2 x3)))))))
+=
+(\x2. (\x3. (\x3. x2 (x2 (x2 x3))) ((x2 (x2 (x2 (x2 (x2 (x2 x3)))))))))
+=
+(\x2. (\x3. (x2 (x2 (x2 (x2 (x2 (x2 (x2 (x2 (x2 x3)))))))))))
+\end{lstlisting}
+
+\section{Project}\label{Project}
+\subsection{Specification}
+For my project in Programming Languages (Fall 2022), I intend on performing data analysis on a data set that is publicly available from GitHub. To accomplish this, the following would have to occur (in order):
+\begin{enumerate}
+    \item Receive approval from Dr. Kurtz for this specific project idea
+    \item Come up with specific questions to answer about the Programming Languages data set, the responses to which can be modeled through various statistical models such as Linear/Logistic Regression Graphs, Data Cluster Graphs, Feature Reduction, LASSO Graphs, and/or Principle Component Analysis (PCA)
+    \item Receive approval from Dr. Kurtz about the questions and the overall documentation of the data analysis report
+    \item Download or import the data set from GitHub into Google Colab, this can be accomplished by replicating a specific iteration of the GitHub Programming Languages data set in an Excel sheet
+    \item Using the Pandas package for Python, create statistical models to respond to each of the questions created for the report
+    \item By the last day of October, provide a PDF of the Google Colab Notebook containing the compiled statistical models as a proof of implementation for this project. This can also be accomplished by embedding the Python code into the "Prototype" subsection of \textit{report.tex}, with each code block being above the respective model that it generated when compiled
+    \item Write report for the analysis of the data set itself, explaining the process of selecting which model(s) to accept, reject, or if any model provided any surprising results about the data set in addition to providing a response to each of the questions created from \textbf{step 4}. A rough draft of this report should be submitted and present within the "Documentation" subsection of \textit{report.tex}
+\end{enumerate}
+\subsection{Prototype}
+\subsection{Documentation}
+\subsection{Critical Appraisal}
+
+\section{Conclusions}\label{Conclusions}
+\dots
 \end{document}
