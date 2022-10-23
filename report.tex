@@ -10,11 +10,11 @@
   \hypersetup{
     colorlinks = true,
     urlcolor = blue,       % color of external links using \href
-    linkcolor= blue,       % color of internal links
+    linkcolor= blue,       % color of internal links 
     citecolor= blue,       % color of links to bibliography
     filecolor= blue,        % color of file links
     }
-
+    
 \usepackage{listings}
 \usepackage{graphicx}
 \graphicspath{ {./Report Images/} }
@@ -40,7 +40,7 @@
   tabsize=3
 }
 
-\theoremstyle{theorem}
+\theoremstyle{theorem} 
    \newtheorem{theorem}{Theorem}[section]
    \newtheorem{corollary}[theorem]{Corollary}
    \newtheorem{lemma}[theorem]{Lemma}
@@ -48,7 +48,7 @@
 \theoremstyle{definition}
    \newtheorem{definition}[theorem]{Definition}
    \newtheorem{example}[theorem]{Example}
-\theoremstyle{remark}
+\theoremstyle{remark}    
   \newtheorem{remark}[theorem]{Remark}
 
 
@@ -70,6 +70,9 @@
 \subsection{Week 3} During the third week of Programming Languages, the class lectures went over the concept of Context and Parse Trees in relation to programming a calculator interpreter.
 \subsection{Week 4} During the fourth week of Programming Languages, the lectures covered the concept of Lambda Calculus, specifically about its syntax and how to parse Lambda equations.
 \subsection{Week 5} During the fifth week of Programming Languages, the lectures covered the concept of performing substitution in Lambda Calculus through pen-and-paper, and through an interpreter.
+\subsection{Week 6} During the sixth week of Programming Languages, the languages covered the concept of how to substitute and rewrite variables within functions, before applying the concept to Lambda Calculus.
+\subsection{Week 7} During the seventh week of Programming Languages, the lectures provided an introduction to the concept of Abstract Reduction Systems (ARS).
+\subsection{Week 8} During the eighth, week of Programming Languages, the lectures covered the concepts of Confluence and Termination in how they relate to ARS.
 \section{Homework}\label{homework}
 \subsection{Week 1}
 
@@ -84,22 +87,22 @@ int gcd(int a, int b)
     {
         return b;
     }
-
+    
     if (b == 0)
     {
         return a;
     }
-
+    
     if (a == b)
     {
         return a;
     }
-
+    
     if (a > b)
     {
         return gcd((a - b), b);
     }
-
+    
     if (b > a)
     {
         return gcd(a, (b - a));
@@ -112,7 +115,7 @@ int main() {
     return 0;
 }
 \end{lstlisting}
-
+    
     The function for calculating the Greatest Common Divisor (GCD) functions by first taking two integers as inputs, represented by \textbf{a} and \textbf{b}. In the case of inputs like gcd(9, 33), 9 and 33 are considered to be \textbf{a} and \textbf{b} in the gcd function respectively. The function first checks to see if either integer is \textit{0}, and in the case of either integer being zero, returns the other integer entered in the function as the gcd. If neither number is zero, the function checks to see if both integers are \textbf{equal to each other}. In the case that both integers are equal, the function returns the first integer as the gcd. If neither of the previous cases are met, the function then compares integer \textbf{a} and \textbf{b}. If integer \textbf{a} is larger, the function recursively calls itself, and \textit{integer a is replaced with (a - b)}. If integer \textbf{b} is larger, the function recursively calls itself, and \textit{integer b is replaced with (b - a).} The function \textit{continues making recursive calls} with modified numbers until a case where gcd is found.
 
 \subsection{Week 2}
@@ -149,7 +152,7 @@ In the case of \textbf{select\textunderscore evens ["a","b","c","d","e"]}:
 select_evens ["a","b","c","d","e"] =
       "b":(select_evens ["c","d","e"]) =
       "b":"d":(select_evens ["e"]) =
-      "b":"d":[] =
+      "b":"d":[] = 
       ["b","d"]
 \end{lstlisting}
 In the case of \textbf{select\textunderscore odds ["a","b","c","d","e"]}:
@@ -157,20 +160,20 @@ In the case of \textbf{select\textunderscore odds ["a","b","c","d","e"]}:
 select_odds ["a","b","c","d","e"] =
       "a":(select_odds ["c","d","e"]) =
       "a":"c":(select_odds ["e"]) =
-      "a":"c":["e"] =
+      "a":"c":["e"] = 
       ["a","c","e"]
 \end{lstlisting}
 In the case of \textbf{member 2 [5,2,6]}:
 \begin{lstlisting}
-member 2 [5,2,6] =
+member 2 [5,2,6] = 
         member 2 [2,6] =          5 != 2
         True                      2 == 2
 \end{lstlisting}
 In the case of \textbf{member 3 [5,2,6]}:
 \begin{lstlisting}
-member 3 [5,2,6] =
+member 3 [5,2,6] = 
       member 3 [2,6] =          5 != 3
-      member 3 [6] =            2 != 3
+      member 3 [6] =            2 != 3      
       member 3 [] =             6 != 3
       False
 \end{lstlisting}
@@ -200,7 +203,7 @@ revert [1,2,3] =
 \end{lstlisting}
 In the case of \textbf{less\textunderscore equal [1,2,3] [2,3,4]}:
 \begin{lstlisting}
-less_equal [1,2,3] [2,3,4] =
+less_equal [1,2,3] [2,3,4] = 
       less_equal [2,3] [3,4] =          1 <= 2
       less_equal [3] [4] =              2 <= 3
       less_equal [] [] =                3 <= 4
@@ -208,7 +211,7 @@ less_equal [1,2,3] [2,3,4] =
 \end{lstlisting}
 In the case of \textbf{less\textunderscore equal [1,2,3] [2,3,2]}:
 \begin{lstlisting}
-less_equal [1,2,3] [2,3,2] =
+less_equal [1,2,3] [2,3,2] = 
       less_equal [2,3] [3,2] =          1 <= 2
       less_equal [3] [2] =              2 <= 3
       False                             3 > 2
@@ -427,15 +430,15 @@ Its Abstract Syntax Tree:
 
 Evaluating of Equations:
 \begin{lstlisting}
-  (\x.x) a = a
-  \x.x a = \x.x a
-  (\x.\y.x) a b = (\y. a) b = a
-  (\x.\y.y) a b = (\y. y) b = b
-  (\x.\y.x) a b c = (\y. a) b c = (a) c = a c
+  (\x.x) a = a         
+  \x.x a = \x.x a           
+  (\x.\y.x) a b = (\y. a) b = a    
+  (\x.\y.y) a b = (\y. y) b = b   
+  (\x.\y.x) a b c = (\y. a) b c = (a) c = a c 
   (\x.\y.y) a b c = (\y. y) b c = (b) c = b c
   (\x.\y.x) a (b c) = (\y. a) (b c) = a
-  (\x.\y.y) a (b c) = (\y. y) (b c) = b c
-  (\x.\y.x) (a b) c = (\y. a b) c = a b
+  (\x.\y.y) a (b c) = (\y. y) (b c) = b c 
+  (\x.\y.x) (a b) c = (\y. a b) c = a b 
   (\x.\y.y) (a b) c = (\y. y) c = c
   (\x.\y.x) (a b c) = (\y. a b c)
   (\x.\y.y) (a b c) = (\y. y)
@@ -458,7 +461,7 @@ Evaluating of Equations:
 ((\f2.\x2. f2 (f2 x2)) (\f3.\x3. f3 (f3 (f3 x3))))
 =
 (\x2. (\f3.\x3. f3 (f3 (f3 x3))) ((\f3.\x3. f3 (f3 (f3 x3))) x2))
-=
+= 
 (\x2. (\f3.\x3. f3 (f3 (f3 x3))) (\x3. x2 (x2 (x2 x3))))
 =
 (\x2. (\x3. (\x3. x2 (x2 (x2 x3))) ((\x3. x2 (x2 (x2 x3))) ((\x3. x2 (x2 (x2 x3))) x3))))
@@ -471,24 +474,27 @@ Evaluating of Equations:
 \end{lstlisting}
 \subsection{Week 7}
 
-For lines 5-7 as shown through:
+For lines 5-8 as shown through:
 \begin{lstlisting}
 evalCBN (EApp e1 e2) = case (evalCBN e1) of
     (EAbs i e3) -> evalCBN (subst i e2 e3)
     e3 -> EApp e3 e2
+evalCBN x = x 
 \end{lstlisting}
-The variables e1, e2, i, and e3 are all bound variables. In the case of e1, the binder is \textit{evalCBN (EApp e1 e2)}, while its scope is \textit{case (evalCBN e1)}. In the case of e2, it shares the same binder as e1 with \textit{evalCBN (EApp e1 e2)}, but has two scopes-- \textit{evalCBN (subst i e2 e3)} and \textit{EApp e3 e2}. Meanwhile, the binder for i is \textit{(EAbs i e3} and its scope is \textit{evalCBN (subst i e2 e3)}. Lastly, e3 is binded by \textit{(EAbs i e3)}, but has two scopes-- \textit{evalCBN (subst i e2 e3)} and \textit{EApp e3 e2}.
-
+In \textit{Line 5}, \textit{e1} and \textit{e2} are bound to the left of \textit{=}, and the scope is the end of \textit{Line 7}. For \textit{Line 6}, the variables \textit{i} and \textit{e3} are bound to the left of \textit{->}, and the scope is the end of the same line. Meanwhile, in \textit{Line 7}, the variable \textit{e3} is bound to the left of \textit{->}, and its scope is the end of the same line. Finally, for \textit{Line 8}, the variable \textit{x} is bound to the left of \textit{=}, and its scope is the end of the same line.
+\\
+\\
 For lines 18-22 as shown through:
 \begin{lstlisting}
-subst id s (EAbs id1 e1) =
+subst id s (EAbs id1 e1) = 
     -- to avoid variable capture, we first substitute id1 with a fresh name inside the body of the Lambda-abstraction, obtaining e2. Only then do we proceed to apply substitution of the original s for id in the body e2.
     let f = fresh (EAbs id1 e1)
-        e2 = subst id1 (EVar f) e1 in
+        e2 = subst id1 (EVar f) e1 in 
         EAbs f (subst id s e2)
 \end{lstlisting}
-The variables f and e2 are both free variables as they are derived from the code block itself, while the variables id, s id1, and e1 are bound variables. In the case of id, it is bound by \textit{subst id s (EAbs id1 e1)} and its scope is \textit{e2 = subst id1 (EVar f) e1 in EAbs f (subst id s e2)}. In the case of s, it is bound by \textit{subst id s (EAbs id1 e1)} and its scope is \textit{e2 = subst id1 (EVar f) e1 in EAbs f (subst id s e2)}. In the case of id1, it is bound by \textit{subst id s (EAbs id1 e1)} with the scope of \textit{let f = fresh (EAbs id1 e1)}. Lastly, e1 is binded by \textit{subst id s (EAbs id1 e1)} in the scope of \textit{let f = fresh (EAbs id1 e1)} and \textit{e2 = subst id1 (EVar f) e1 in EAbs f (subst id s e2)}.
-
+In \textit{Line 18}, the variables \textit{id}, \textit{s}, \textit{id1}, and \textit{e1} are all bound to the left of \textit{=}, and the scope is the end of \textit{Line 22}. Meanwhile, in \textit{Line 20}, the variable \textit{f} is bound to the left of \textit{=}, and the scope is also the end of \textit{Line 22}. Lastly, on \textit{Line 21}, the variable \textit{e2} is bound by \textit{=}, and its scope is the end of \textit{Line 22} as well.
+\\
+\\
 Item 3:
 \begin{lstlisting}
 --Idea:
@@ -505,7 +511,7 @@ evalCBN ( ( evalCBN (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EVar 
     -- inner evalCBN
     -- Line 6
     evalCBN (subst ((EAbs (Id "x")) (EVar (Id "y")) (EAbs (Id "y") (EVar (Id "x")))))
-
+    
         -- Line 18
         -- Line 20
         f = fresh ((EAbs (Id "y") (EVar (Id "x"))))
@@ -515,9 +521,9 @@ evalCBN ( ( evalCBN (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EVar 
         -- Line 16
         EAbs (Id "y0") (subst (Id "y") (EVar (Id "y")) (EVar (Id "x")))
         -- Line 16
-
+        
     evalCBN (EAbs (Id "y0") (EVar (Id "y")))
-
+    
 = -- Line 7
 evalCBN (EApp (EAbs (Id "y0")) (EVar (Id "y"))) (EVar (Id "z"))
 = -- Line 6
@@ -550,15 +556,29 @@ EVar (Id "y")
 \\ 3. Confluent: True, Terminating: False, Unique Normal Forms: True
 \\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_9.jpg}
 \\ 4. Confluent: True, Terminating: False, Unique Normal Forms: False
-\\ No example of this would exist, as in order for an ARS to be Confluent, the initial term should be able to be reduced into two different normal forms, and those two normal forms would have to be able to be reduced into another normal form, which would imply a Unique Normal Form.
+\\ a points to itself, add picture later
 \\ 5. Confluent: False, Terminating: True, Unique Normal Forms: True
-\\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_10.jpg}
+\\ There is no example of this as in order for there to be a possibility of having an Unique Normal Form, the ARS must be at the very least Confluent, making "Confluence: False" an impossibility to have alongside "Unique Normal Form: False." 
 \\ 6. Confluent: False, Terminating: True, Unique Normal Forms: False
 \\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_11.jpg}
 \\ 7. Confluent: False, Terminating: False, Unique Normal Forms: True
-\\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_12.jpg}
+\\ There is no example of this as in order for an ARS to have a Unique Normal Form, at its base, the ARS must be at least Confluent, making "Confluence: False" an impossibility to have alongside "Unique Normal Form: True."
 \\ 8. Confluent: False, Terminating: False, Unique Normal Forms: False
-\\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_13.jpg}
+\\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_7.jpg}
+\subsection{Week 8}
+For the rewrite rules:
+\begin{lstlisting}
+  aa -> a
+  bb -> b
+  ba -> ab
+  ab -> ba
+\end{lstlisting}
+\begin{enumerate}
+    \item The ARS does not terminate because the output of the last rewrite rule is the input of the third rewrite rule, and the output of the third rule is the input of the last rule. This results in the potential for an infinitely rewriting function, and thus the ARS does not terminate.
+    \item The normal forms of this ARS are \textit{a} and \textit{b}.
+    \item The main change that would be made to the function would be to eliminate the fourth rule. Thus the ARS would have 3 normal forms: \textit{a}, \textit{b}, and \textit{ab}.
+    \item The normal forms within the context of the ARS are a single form of a duplicate term. Because of this, it can be said that the primary function of the ARS is to reduce any duplicate terms until there are no longer any duplicates.
+\end{enumerate}
 \section{Project}\label{Project}
 \subsection{Specification}
 For my project in Programming Languages (Fall 2022), I intend on performing data analysis on a data set that is publicly available from GitHub. To accomplish this, the following would have to occur (in order):
@@ -566,9 +586,9 @@ For my project in Programming Languages (Fall 2022), I intend on performing data
     \item Receive approval from Dr. Kurtz for this specific project idea
     \item Come up with specific questions to answer about the Programming Languages data set, the responses to which can be modeled through various statistical models such as Linear/Logistic Regression Graphs, Data Cluster Graphs, Feature Reduction, LASSO Graphs, and/or Principle Component Analysis (PCA)
     \item Receive approval from Dr. Kurtz about the questions and the overall documentation of the data analysis report
-    \item Download or import the data set from GitHub into Google Colab, this can be accomplished by replicating a specific iteration of the GitHub Programming Languages data set in an Excel sheet
+    \item Download or import the data set from GitHub into Google Colab, this can be accomplished by replicating a specific iteration of the GitHub Programming Languages data set in an Excel sheet 
     \item Using the Pandas package for Python, create statistical models to respond to each of the questions created for the report
-    \item By the last day of October, provide a PDF of the Google Colab Notebook containing the compiled statistical models as a proof of implementation for this project. This can also be accomplished by embedding the Python code into the "Prototype" subsection of \textit{report.tex}, with each code block being above the respective model that it generated when compiled
+    \item By the last day of October, provide a PDF of the Google Colab Notebook containing the compiled statistical models as a proof of implementation for this project. This can also be accomplished by embedding the Python code into the "Prototype" subsection of \textit{report.tex}, with each code block being above the respective model that it generated when compiled 
     \item Write report for the analysis of the data set itself, explaining the process of selecting which model(s) to accept, reject, or if any model provided any surprising results about the data set in addition to providing a response to each of the questions created from \textbf{step 4}. A rough draft of this report should be submitted and present within the "Documentation" subsection of \textit{report.tex}
 \end{enumerate}
 \subsection{Prototype}
