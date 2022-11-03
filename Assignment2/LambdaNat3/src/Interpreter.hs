@@ -19,8 +19,8 @@ evalCBN (ENatS e) = ENatS (evalCBN e)
 evalCBN (EIf e1 e2 e3 e4) = if (e1 == e2) then e3 else e4
 evalCBN (ELet i e1 e2) = evalCBN (EApp (EAbs i e2) e1)
 evalCBN (EMinusOne n) = case (evalCBN n) of
-    ENatS (evalCBN m) -> (evalCBN m)
-    ENat0 -> (evalCBN ENat0)
+    (ENatS m) -> (evalCBN m)
+    ENat0 -> ENat0
 
 evalCBN x = x -- this is a catch all clause, currently only for variables, must be the last clause of the eval function
 
@@ -50,6 +50,4 @@ subst id s ENat0 = ENat0
 subst id s (ENatS e) = ENatS (subst id s e)
 subst id s (EIf e1 e2 e3 e4) = if (e1 == e2) then (subst id s e3) else (subst id s e4)
 subst id s (ELet i e1 e2) = subst (id s (EApp (EAbs i e2) e1))
-subst id s (EMinusOne n) = case (evalCBN n) of
-    ENatS (evalCBN m) -> (subst id s m)
-    ENat0 -> (subst id s ENat0)
+subst id s (EMinusOne n) = EMinusOne (subst id s n)
