@@ -17,7 +17,7 @@ evalCBN (EApp e1 e2) = case (evalCBN e1) of
 evalCBN ENat0 = ENat0
 evalCBN (ENatS e) = ENatS (evalCBN e)
 evalCBN (EIf e1 e2 e3 e4) = if (e1 == e2) then (evalCBN e3) else (evalCBN e4)
-evalCBN (ELet i e1 e2) = evalCBN (EApp (EAbs i e2) e1)
+evalCBN (ELet i e1 e2) = evalCBN (EApp (EAbs (Id i) e2) e1)
 evalCBN (EMinusOne n) = case (evalCBN n) of
     (ENatS m) -> (evalCBN m)
     ENat0 -> ENat0
@@ -49,5 +49,5 @@ subst id s (EAbs id1 e1) =
 subst id s ENat0 = ENat0
 subst id s (ENatS e) = ENatS (subst id s e)
 subst id s (EIf e1 e2 e3 e4) = if (e1 == e2) then (subst id s e3) else (subst id s e4)
-subst id s (ELet i e1 e2) = subst (id s (evalCBN (EApp (EAbs i e2) e1)))
+subst id s (ELet i e1 e2) = subst (id s (EApp (EAbs (Id i) e2) e1))
 subst id s (EMinusOne n) = EMinusOne (subst id s n)
