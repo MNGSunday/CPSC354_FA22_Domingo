@@ -48,6 +48,6 @@ subst id s (EAbs id1 e1) =
 ----------------------------------------------------------------
 subst id s ENat0 = ENat0
 subst id s (ENatS e) = ENatS (subst id s e)
-subst id s (EIf e1 e2 e3 e4) = if ((evalCBN e1) == (evalCBN e2)) then (subst id s e3) else (subst id s e4)
-subst id s (ELet i e1 e2) = (ELet (subst id s i) (subst id s e1) (subst id s e2)) 
+subst id s (EIf e1 e2 e3 e4) = (EIf e1 e2 (subst id s e3) (subst id s e4))
+subst id s (ELet i e1 e2) = (ELet (subst id s i) (subst id s e1) (subst id s e2))
 subst id s (EMinusOne n) = EMinusOne (subst id s n)
