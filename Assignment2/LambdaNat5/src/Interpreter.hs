@@ -17,9 +17,13 @@ evalCBN (ELet i e1 e2) = evalCBN (EApp (EAbs i e2) e1)
 evalCBN (ERec i e1 e2) = evalCBN (EApp (EAbs i e2) (EFix (EAbs i e1)))
 evalCBN (EFix e) = evalCBN (EApp e (EFix e))
 evalCBN ENil = ENil
--- evalCBN (ECons e1 e2)
--- evalCBN (EHd e)
--- evalCBN (ETl e)
+evalCBN (ECons e1 e2) = (ECons (evalCBN e1) (evalCBN e2))
+evalCBN (EHd e) = case (evalCBN e) of
+    (ECons e1 e2) -> (evalCBN e1)
+    ENil -> ENil --Head of an empty list is considered to be #
+evalCBN (ETl e) = case (evalCBN e) of
+    (ECons e1 e2) -> (evalCBN e2)
+    ENil -> ENil --Head and Tail of an empty list are considered to be #
 evalCBN (ELE e1 e2) = case (evalCBN e1) of
     (EInt n) -> case (evalCBN e2) of
         (EInt m) -> (n <= m)
@@ -81,4 +85,7 @@ subst id s (EMinus e l) = EMinus (subst id s e) (subst id s l)
 subst id s (ETimes e l) = ETimes (subst id s e) (subst id s l)
 -- add the missing cases
 subst id s ENil = ENil
+subst id s (ECons e1 e2) = (ECons (subst id s e1) (subst id s e2))
+subst id s (EHd e) = EHd (subst id s e)
+subst id s (ETl e) = ETl (subst id s e)
 subst id s (ELE e1 e2) = (ELE (subst id s e1) (subst id s e2))
