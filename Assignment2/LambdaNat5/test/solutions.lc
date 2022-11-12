@@ -21,3 +21,9 @@ in
 even a1:a2:a3:a4:# // 1
 
 ;;
+
+let rec append = \x.\y. if (hd x)=# then y else (ECons (append (tl x)) (hd x))
+in
+let rec reverse = \z. if z=# then # else (append (hd z) (reverse (tl z)))
+in
+reverse a:b:c:# // c:b:a:#
