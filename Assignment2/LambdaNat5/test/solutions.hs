@@ -12,6 +12,7 @@ even [] = 1
 even [a] = 0
 even x:y:list = (even list)
 
+append [] [] = []
 append [] list_base = list_base
 append (x:list_add) list_base = x:(append list_add list_base)
 
