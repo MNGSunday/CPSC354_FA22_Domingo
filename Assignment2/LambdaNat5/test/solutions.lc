@@ -1,27 +1,35 @@
 let is_empty = \x. if x=# then 1 else 0
 in
-is_empty a:# // 0
+is_empty a:# // 0, works
 
 ;;
 
 let rec fib = \x. if x=0 then 0 else if x=1 then 1 else (fib (x - 1) + fib (x - 2))
 in
-fib 6 // 8
+fib 6 // 8, works
 
 ;;
 
 let rec length = \x. if x=# then 0 else 1 + (length (tl x))
 in
-length a:b:c:# // 3
+length a:b:c:# // 3, works
 
 ;;
 
 let rec even = \x. if x=# then 1 else if (tl x)=# then 0 else if (tl (tl x))=# then 1 else (even (tl (tl x)))
 in
-even a1:a2:a3:a4:# // 1
+even a1:a2:a3:a4:# // 1, works
+
+// ;;
+
+// let rec append = \x.\y. if x=# then y else ((append (tl x) y):(hd x))
+// in
+// let rec reverse = \z. if z=# then # else (append (hd z) (reverse (tl z)))
+// in
+// reverse a:b:c:# c : b : a : #, LambdaNat-exe: src/Interpreter.hs:(21,19)-(23,16): Non-exhaustive patterns in case
 
 ;;
 
 let rec weave = \x. \y. if x=# then if y=# then # else y else if y=# then x else if ((hd x) less_equal (hd y))=1 then ((hd x):(weave (tl x) y)) else ((hd y):(weave x (tl y)))
 in
-weave (0:1:4:#) (2:3:5:#)
+weave (0:1:4:#) (2:3:5:#) // 0 : 1 : 2 : 3 : 4 : 5 : #, works
