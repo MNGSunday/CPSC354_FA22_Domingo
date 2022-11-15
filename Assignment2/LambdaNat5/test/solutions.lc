@@ -22,8 +22,6 @@ even a1:a2:a3:a4:# // 1
 
 ;;
 
-let rec append = \x.\y. if x=# then y else ((append (tl x) y):(hd x))
+let rec weave = \x. \y. if x=# then if y=# then # else y else if y=# then x else if ((hd x) less_equal (hd y))=1 then (ECons (hd x) (weave (tl x) y)) else (ECons (hd y) (weave x (tl y)))
 in
-let rec reverse = \z. if z=# then # else (append (hd z) (reverse (tl z)))
-in
-reverse a:b:c:# // c:b:a:#
+weave 1:2:3:# 4:5:6:#
