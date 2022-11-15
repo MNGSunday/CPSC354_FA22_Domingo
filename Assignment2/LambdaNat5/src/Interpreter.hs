@@ -26,7 +26,7 @@ evalCBN (ETl e) = case (evalCBN e) of
     ENil -> ENil --Head and Tail of an empty list are considered to be #
 evalCBN (ELE e1 e2) = case (evalCBN e1) of
     (EInt n) -> case (evalCBN e2) of
-        (EInt m) -> (n <= m)
+        (EInt m) -> if (n <= m) then (EInt 1) else (EInt 0)
         e2' -> ELE (EInt n) e2'
     e1' -> case (evalCBN e2) of
         (EInt m) -> ELE e1' (EInt m)
