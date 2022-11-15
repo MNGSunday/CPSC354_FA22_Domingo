@@ -20,13 +20,13 @@ let rec even = \x. if x=# then 1 else if (tl x)=# then 0 else if (tl (tl x))=# t
 in
 even a1:a2:a3:a4:# // 1, works
 
-// ;;
+;;
 
-// let rec append = \x.\y. if x=# then y else ((append (tl x) y):(hd x))
-// in
-// let rec reverse = \z. if z=# then # else (append (hd z) (reverse (tl z)))
-// in
-// reverse a:b:c:# c : b : a : #, LambdaNat-exe: src/Interpreter.hs:(21,19)-(23,16): Non-exhaustive patterns in case
+let rec append = \x.\y. if x=# then y else ((hd x):(append (tl x) y))
+in
+let rec reverse = \z. if z=# then # else (append (hd z) (reverse (tl z)))
+in
+reverse a:b:c:# c : b : a : #, LambdaNat-exe: src/Interpreter.hs:(21,19)-(23,16): Non-exhaustive patterns in case
 
 ;;
 
