@@ -1,0 +1,33 @@
+hd one:two
+
+;;
+
+hd one:two:#
+
+;;
+
+hd (one:two):#
+
+;;
+
+hd (one:two:#):#
+
+;;
+
+(hd one:two:#):#
+
+;;
+
+tl one:two:#
+
+;;
+
+1 less_equal 2
+
+;;
+
+1 less_equal 1
+
+;;
+
+2 less_equal 1
