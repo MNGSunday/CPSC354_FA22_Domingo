@@ -18,7 +18,7 @@ length a:b:c:# // 3, works
 
 let rec even = \x. if x=# then 1 else if (tl x)=# then 0 else if (tl (tl x))=# then 1 else (even (tl (tl x)))
 in
-even a1:a2:a3:a4:a5:# // 1, works
+even a1:a2:a3:a4:# // 1, works
 
 // ;;
 
