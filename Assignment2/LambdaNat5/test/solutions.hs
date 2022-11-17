@@ -1,23 +1,23 @@
 is_empty [] = true
-is_empty x:xs = false
+is_empty (x:xs) = false
 
 fib 0 = 0
 fib 1 = 1
 fib x = (fib (x - 1)) + (fib (x - 2))
 
 length [] = 0
-length x:xs = 1 + (length xs)
+length (x:xs) = 1 + (length xs)
 
 even [] = 1
 even [a] = 0
-even x:y:list = (even list)
+even (x:y:list) = (even list)
 
 append [] [] = []
 append [] list_base = list_base
 append (x:list_add) list_base = x:(append list_add list_base)
 
 reverse [] = []
-reverse x:list = append (reverse list) [x]
+reverse (x:list) = append (reverse list) [x]
 
 weave [] [] = []
 weave list1 [] = list1
