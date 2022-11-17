@@ -1,5 +1,5 @@
-is_empty [] = true
-is_empty (x:xs) = false
+is_empty [] = 1
+is_empty (x:xs) = 0
 
 fib 0 = 0
 fib 1 = 1
@@ -26,7 +26,7 @@ weave (x:list1) (y:list2) = if (x <= y) then x:(weave list1 (y:list2)) else y:(w
 
 -- Testing
 main = do
-    print $ is_empty [a] -- 0
+    print $ is_empty ["a"] -- 0
     print $ is_empty [] -- 1
     print $ fib 6 -- 8
     print $ l_length ["a","b","c"] -- 3
