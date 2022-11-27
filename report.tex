@@ -75,9 +75,12 @@
 \subsection{Week 8} During the eighth, week of Programming Languages, the lectures covered the concepts of Confluence and Termination in how they relate to ARS.
 \subsection{Week 9} During the ninth week of Programming Languages, the lectures covered the concepts of how to extend the definitions of Lambda calculus to if-then-else statements, defining variables through \textit{let}, and recursion, in addition to starting Assignment 2.
 \subsection{Week 10} During the tenth week of Programming Languages, the lectures covered the concepts of Operational and Denotational Semantics, and how they apply to Natural Numbers. In addition to this, the lecture also involved the discussion about the design of a domain-specific language within the context of financial engineering.
+\subsection{Week 11} During the eleventh week of Programming Languages, the lectures covered the introduction to Part 2 of Assignment 2, where we implement the concept of Lists into our Lambda Calculus language. The lectures also introduced the concept of Hoare Logic.
+\subsection{Week 12} During the twelfth week of Programming Languages, the lectures covered the concept of Finitely Branching Systems, and eventually its application to ARS and proofs.
 \section{Homework}\label{homework}
 \subsection{Week 1}
-
+The objective for this week's homework is to implement code to calculate the Greatest Common Denominator between two integers in a coding language of our choice.
+\\
 C++ Code for Greatest Common Denominator:
 \begin{lstlisting}
 #include <iostream>
@@ -121,6 +124,7 @@ int main() {
     The function for calculating the Greatest Common Divisor (GCD) functions by first taking two integers as inputs, represented by \textbf{a} and \textbf{b}. In the case of inputs like gcd(9, 33), 9 and 33 are considered to be \textbf{a} and \textbf{b} in the gcd function respectively. The function first checks to see if either integer is \textit{0}, and in the case of either integer being zero, returns the other integer entered in the function as the gcd. If neither number is zero, the function checks to see if both integers are \textbf{equal to each other}. In the case that both integers are equal, the function returns the first integer as the gcd. If neither of the previous cases are met, the function then compares integer \textbf{a} and \textbf{b}. If integer \textbf{a} is larger, the function recursively calls itself, and \textit{integer a is replaced with (a - b)}. If integer \textbf{b} is larger, the function recursively calls itself, and \textit{integer b is replaced with (b - a).} The function \textit{continues making recursive calls} with modified numbers until a case where gcd is found.
 
 \subsection{Week 2}
+The objective of this week's homework is to implement the following functions in Haskell code--a function \textit{len} that takes in a list and calculates the length of a list, a function \textit{select\textunderscore evens} that takes in a list and returns only the even-indexed elements of that list, a function \textit{select\textunderscore odds} that takes in a list and returns only the odd-indexed elements of that list, a function \textit{member} that takes in an element of a list and a list and returns whether that element exists within the list, a function \textit{append} that takes in two lists and adds the elements of the second list to the first list, a function \textit{revert} that takes in a list and returns a list with its elements in the reverse order of the original list, and a function \textit{less\textunderscore equal} that takes in two lists and returns whether the first list is less than the second list or not.
 \begin{lstlisting}
 len [] = 0
 len (x:xs) = 1 + len xs
@@ -149,6 +153,9 @@ less_equal (x:list_one) (y:list_two) = if x <= y
 									    then less_equal list_one list_two
 									    else False
 \end{lstlisting}
+For this section of the homework, the objective is to show the steps that Haskell would take in order to achieve the result of a function given specific inputs.
+\\
+\\
 In the case of \textbf{select\textunderscore evens ["a","b","c","d","e"]}:
 \begin{lstlisting}
 select_evens ["a","b","c","d","e"] =
@@ -576,10 +583,17 @@ For the rewrite rules:
   ab -> ba
 \end{lstlisting}
 \begin{enumerate}
-    \item The ARS does not terminate because the output of the last rewrite rule is the input of the third rewrite rule, and the output of the third rule is the input of the last rule. This results in the potential for an infinitely rewriting function, and thus the ARS does not terminate.
-    \item The normal forms of this ARS are \textit{a} and \textit{b}.
-    \item The main change that would be made to the function would be to eliminate the fourth rule. Thus the ARS would have 3 normal forms: \textit{a}, \textit{b}, and \textit{ab}.
-    \item The normal forms within the context of the ARS are a single form of a duplicate term. Because of this, it can be said that the primary function of the ARS is to reduce any duplicate terms until there are no longer any duplicates.
+    \item The ARS does not terminate because the output of the last rewrite rule ($ab\xrightarrow{}ba$) is the input of the third rewrite rule ($ba\xrightarrow{}ab$), and the output of the third rule is the input of the last rule. Because of instances such as: $ba \xrightarrow{} ab \xrightarrow{} ba ...$, the ARS can be rewritten infinitely and thus the ARS does not terminate.
+    \item The normal forms of this ARS are \textit{a}, \textit{b}, and [ ]. [ ] is a normal form as if no characters are in the initial function, the function can only return the empty word [ ]. Meanwhile, the normal forms \textit{a} and \textit{b} can be seen in instances such as: $aaa \xrightarrow{} aa \xrightarrow{} a$ and $bbb \xrightarrow{}  bb \xrightarrow{} b$.
+    \item The main change that would be made to the function would be to eliminate the fourth rule. Thus the ARS would have 3 normal forms: \textit{a}, \textit{b}, and \textit{ab}. This would then make the new ARS look like:
+    \begin{lstlisting}
+    aa -> a
+    bb -> b
+    ba -> ab
+    \end{lstlisting}
+
+    This maintains the same equivalence cases as the previous ARS in instances such as: $aaa \xrightarrow{} aa \xrightarrow{} a$ , $bbb \xrightarrow{}  bb \xrightarrow{} b$ , and [ ] $\xrightarrow{}$ [ ]. This does not change the equivalence of the original equation as by the definition of equivalence, the fourth rule $ab \xrightarrow{} ba$ can be also performed backwards $ab \xleftarrow{} ba$, which is the same rule as the third rule. In return, this results in another possible normal form \textit{ab}.
+    \item The invariant of this algorithm is that the starting word: is empty \textit{[ ]}, contains at least one \textit{a}, contains at least one \textit{b}, or contains at least one \textit{a} and at least one \textit{b}. Through this, the specification of the algorithm determines that for any word, it determines if the word is \textit{blank}, contains the letter \textit{a} but not \textit{b}, contains the letter \textit{b} but not \textit{a}, or contains both the letters \textit{a} and \textit{b}.
 \end{enumerate}
 \subsection{Week 9}
 \textbf{Project Milestones}
@@ -591,14 +605,14 @@ For the rewrite rules:
         \item The questions should have some relation to the nature or ask for some conclusion about Programming Languages based on the resulting statistical model.
         \item This can alternatively be found uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
     \end{itemize}
-    \item By \textbf{November 19, 2022}, create the statistical models associated for each of the questions.
+    \item By \textbf{November 30, 2022}, create the statistical models associated for each of the questions.
     \begin{itemize}
         \item This will be accomplished via Google Colab
         \item The code and associated models for each of the statistical models should be included within the \textbf{Prototype} subsection of this report.
         \item Justifications for certain choices when generating the models (i.e. selecting a specific clustering methods or selecting which variables should be excluded from a revised model) should be also included alongside the code for the statistical models as comments.
         \item The Colab Notebook and a PDF of the compiled Notebook containing the statistical models should be uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
     \end{itemize}
-    \item By \textbf{December 3, 2022}, have a rough draft of the responses to each of the questions for this report.
+    \item By \textbf{December 7, 2022}, have a rough draft of the responses to each of the questions for this report.
     \begin{itemize}
         \item This can be either written in a Word Document uploaded to the \textit{Programming Languages Project Documents} folder on GitHub or written directly to the \textbf{Documentation} section of this report.
         \item The responses to each of the questions, while still answering the questions, should contain a clear connection and come to a conclusion about trends and observations that can be made regarding the Programming Languages data.
@@ -637,18 +651,31 @@ f2 =
     if 2 == 0 then 1 else fixF (2-1) * 2 =
     -- else case
     (fixF 1) * 2 =
-    -- 2 can be moved to the left-hand side, while fixF 1 becomes F fixF 1, and Haskell evaluates F first
-    2 * (\f. \n. if n == 0 then 1 else f(n-1) * n) FixF 1 =
-    2 * (if 1 == 0 then 1 else fixF (1-1) * 1) =
+    -- fixF 1 becomes F fixF 1, and Haskell evaluates F first
+    (\f. \n. if n == 0 then 1 else f(n-1) * n) FixF 1 * 2=
+    (if 1 == 0 then 1 else fixF (1-1) * 1) * 2=
     -- else case
-    2 * ((fixF 0) * 1) =
+    (((fixF 0) * 2) * 1) =
     -- 1 can be moved to the left-hand side, while fixF 0 becomes F fixF1, and Haskell evaluates F first
-    2 * 1 * (\f. \n. if n == 0 then 1 else f(n-1) * n) FixF 0 =
-    2 * 1 * (if 0 == 0 then 1 else fixF(0) * 0) FixF -1 =
+    (\f. \n. if n == 0 then 1 else f(n-1) * n) FixF 0 * 2 * 1=
+    (if 0 == 0 then 1 else fixF(0) * 0) FixF -1 2 * 1=
     -- then case
-    2 * 1 * 1 =
+    2 * 1 * 1 = -- arithmetic
     2
 \end{lstlisting}
+\subsection{Week 11}
+For this section of the homework, we are supposed to leave a copy of our question and two replies to other students regarding the "Composing Contracts" example of an application of DSL to Finances.
+\subsection{Week 12}
+The objective of this week's homework is to apply Hoare Logic to a given function.
+\\
+\\
+Given the equation: while (x!=0) do z:=z*y;  x:= x-1 done...
+\\
+Program variables: \textit{x}, \textit{y}, and \textit{z}
+\\
+Mathematical variables: \textit{m}, \textit{n}, and \textit{k}
+\\
+\\ \includegraphics[width=18cm, height=20cm]{Report Images/week12.jpg}
 
 \section{Project}\label{Project}
 \subsection{Specification}
