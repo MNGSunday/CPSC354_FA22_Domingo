@@ -1,0 +1,4 @@
+Type of Linear Regression Model,Training Data R2 Score,Training Data Mean Squared Error Score,Testing Data R2 Score,Testing Data Mean Squared Error Score
+All Variables,0.163313852,105.2118306,0.423273738,80.82177751
+Manual LASSO,0.095030868,113.7982972,0.353021419,90.66685942
+Automatic LASSO,0,125.7482639,-0.011905352,141.8072917
