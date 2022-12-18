@@ -227,6 +227,7 @@ less_equal [1,2,3] [2,3,2] =
 \end{lstlisting}
 
 \subsection{Week 3}
+The objective of this week's homework was to complete the function Hanoi, which represents the Tower of Hanoi puzzle involving a starting tower of 5 disks with the objective of moving the tower to the rightmost column, denoted by "2" in the last argument of the function.
 \begin{lstlisting}
 hanoi 5 0 2
     hanoi 4 0 1
@@ -313,6 +314,7 @@ Within the computation for the Towers of Hanoi with \textit{n Disks = 5}, the wo
 $ Hanoi = 2^N - 1$, where \textit{N} is the number of disks from the initial tower.
 
 \subsection{Week 4}
+The objective of this week's homework is to explore the parser and abstract syntax tree of arithmetic. \\
 The Abstract Syntax Tree of $2 + 1$ is:
 
 \includegraphics[width=15cm, height=8cm]{Report Images/week4_1.jpg}
@@ -353,6 +355,7 @@ Plus (Plus (Plus (Num 1) (Times (Num 2) (Num 3))) (Times (Num 4) (Num 5))) (Num 
 The abstract syntax tree of $1+2+3$ would be identical to the one of $(1+2)+3$ as the compiler would calculate from left to right as there are no other higher-order operations aside from addition.
 
 \subsection{Week 5}
+The objective of this week's homework is to explore the parser for Lambda Calculus, as well as to explore the concept of Linearized Trees.\\
 \textbf{Part 1:}
 
 The Linearized Tree for $x$ is:
@@ -456,6 +459,7 @@ Evaluating of Equations:
 \includegraphics[width=15cm, height=8cm]{Report Images/week5_9.jpg}
 
 \subsection{Week 6}
+The objective of this week's homework is to practice reducing Lambda Calculus equations and to write an outline of the final project for this class see "Specifiction". \\
 \begin{lstlisting}
 (\exp . \two . \three . exp two three)
 (\m.\n. m n)
@@ -482,7 +486,8 @@ Evaluating of Equations:
 (\x2. (\x3. (x2 (x2 (x2 (x2 (x2 (x2 (x2 (x2 (x2 x3)))))))))))
 \end{lstlisting}
 \subsection{Week 7}
-
+The objective of this week's homework is to explore the concept of scope and bound in the case of program functions, as well as to practice more Lambda Calculus substitution and to explore the properties of Abstract Reduction Systems (ARS).
+\\
 For lines 5-8 as shown through:
 \begin{lstlisting}
 evalCBN (EApp e1 e2) = case (evalCBN e1) of
@@ -575,6 +580,7 @@ EVar (Id "y")
 \\ 8. Confluent: False, Terminating: False, Unique Normal Forms: False
 \\ \includegraphics[width=15cm, height=8cm]{Report Images/week7_7.jpg}
 \subsection{Week 8}
+The objective of this week's homework is to explore and analyze the properties of a specific Abstract Reduction System given its rules.\\
 For the rewrite rules:
 \begin{lstlisting}
   aa -> a
@@ -596,29 +602,7 @@ For the rewrite rules:
     \item The invariant of this algorithm is that the starting word: is empty \textit{[ ]}, contains at least one \textit{a}, contains at least one \textit{b}, or contains at least one \textit{a} and at least one \textit{b}. Through this, the specification of the algorithm determines that for any word, it determines if the word is \textit{blank}, contains the letter \textit{a} but not \textit{b}, contains the letter \textit{b} but not \textit{a}, or contains both the letters \textit{a} and \textit{b}.
 \end{enumerate}
 \subsection{Week 9}
-\textbf{Project Milestones}
-\begin{enumerate}
-    \item By \textbf{November 5, 2022}, email Dr. Kurtz the questions regarding the Programming Languages GitHub Data for the report, as well as the Excel sheet based on the data found from Githut.info.
-    \begin{itemize}
-        \item There should at least be \textbf{three} data analysis-related questions.
-        \item The questions should relate to different types of statistical models, or involve the modification of a previously used statistical model using another data analysis technique.
-        \item The questions should have some relation to the nature or ask for some conclusion about Programming Languages based on the resulting statistical model.
-        \item This can alternatively be found uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
-    \end{itemize}
-    \item By \textbf{November 30, 2022}, create the statistical models associated for each of the questions.
-    \begin{itemize}
-        \item This will be accomplished via Google Colab
-        \item The code and associated models for each of the statistical models should be included within the \textbf{Prototype} subsection of this report.
-        \item Justifications for certain choices when generating the models (i.e. selecting a specific clustering methods or selecting which variables should be excluded from a revised model) should be also included alongside the code for the statistical models as comments.
-        \item The Colab Notebook and a PDF of the compiled Notebook containing the statistical models should be uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
-    \end{itemize}
-    \item By \textbf{December 7, 2022}, have a rough draft of the responses to each of the questions for this report.
-    \begin{itemize}
-        \item This can be either written in a Word Document uploaded to the \textit{Programming Languages Project Documents} folder on GitHub or written directly to the \textbf{Documentation} section of this report.
-        \item The responses to each of the questions, while still answering the questions, should contain a clear connection and come to a conclusion about trends and observations that can be made regarding the Programming Languages data.
-        \item Justifications for decisions made regarding why certain modelling techniques or variables get excluded should also be reiterated within the report.
-    \end{itemize}
-\end{enumerate}
+The objective of this week's homework is to analyze an Abstract Reduction System (ARS) using the techniques and definitions that we have learned during lecture. \\
 For the ARS (A, $\xrightarrow{}$) where A is the set of words over the alphabet ${a, b, c}$ and defined by the rules:
 \begin{lstlisting}
 ba -> ab
@@ -637,6 +621,7 @@ cc -> b
 \end{lstlisting}
 The first six rules of the ARS indicate that the order of each member of the alphabet within a word does not matter, as each word can be rewritten into any other word containing the same letters. Consequently, the first six rules also show that the ARS does not necessarily terminate, due to being able to a potential to be rearranged infinitely. The last six rules of the ARS on the other hand, show that the ARS does actually have normal forms, which happen to be \textit{a}, \textit{b}, \textit{c}, and \textit{blank}. While the seventh, eighth, eleventh, and twelfth rules of the ARS indicate that if there are an even number of members within the starting word, that the ARS will result in a single member being the normal form of the ARS, the ninth and tenth rules of the ARS imply that in the event that the starting word has an odd number of members, that the resulting normal form of the ARS would be blank. Because of this, while the ARS may have normal forms, none of them are unique to the ARS. Because this ARS has multiple normal forms, it is not necessarily confluent either as the only case that it would be confluent is where the initial word has an odd number of members.
 \subsection{Week 10}
+The objective of this week's homework is to calculate Fix F 2, which represents the concept of a fixed point in calculus. \\
 Given \textit{F} as:
 \begin{lstlisting}
 \f. \n. if n == 0 then 1 else f(n-1)*n
@@ -664,16 +649,20 @@ f2 =
     2
 \end{lstlisting}
 \subsection{Week 11}
-For this section of the homework, we are supposed to leave a copy of our question and two replies to other students regarding the "Composing Contracts" example of an application of DSL to Finances.
+For this section of the homework, the task was to write a 500-word essay regarding the topic of the application of DSL in the field of finances.
+\\
+\\
+\indent Overall, the most interesting thing about learning about the application of a Domain Specific Programming Language (DSL) to finances, specifically the construction of increasingly complex contracts, was the fact that a lot of the syntax and grammar of the financial DSL was reminiscent of the syntax and grammar of functional programming languages, which shouldn’t have been surprising as the article had displayed a Haskell implementation of the financial DSL. \\
+
+\indent Though a lot of confusion arose from the inclusion of mathematical symbols used to represent the contracts, the fact that we ourselves were confused by the symbols used to abstract various concepts relating to different aspects of contracts, made me question whether more financially savvy individuals would also decide to use the same symbolic representations for contracts or if it was more of an arbitrary choice made by those who had designed the DSL. Though I was informed that a knowledge gap for financial experts regarding having to learn the structure and functionality of this DSL would not impact the adoption of smart contracts in the field of finances as the existence of the DSL would already validate the potential of integrating smart contracts, I still feel as though there still exists potential for a knowledge gap that would have to be filled prior to mass integration of financial contracts. Instead of the knowledge gap existing for the financial experts, the gap would then exist for the software engineers who end up working with those financial experts. Given that our class, consisting of software engineering and computer science majors in addition to some of those students having some familiarity with finances, already had difficulty following some of the concepts introduced by the DSL, namely some of its abstractions of contract conditions, could potentially indicate that the software engineers who eventually begin working with financial experts using the DSL introduced in the article will likely need to have to have some prior curriculum relating to finance or training from another software engineer more savvy in using the DSL in order to effectively work with the financial expert in the event that the latter needs support when an unexpected error occurs while using a smart contract. \\
+
+\indent I also found it interesting that the authors of the article had also mentioned that in addition to the Haskell implementation of the DSL shown in the article, that there also existed an implementation of the financial DSL through C++, and that the authors intend on using the success of the Haskell implementation to improve the C++ implementation. As C++ is not only a much more accessible programming language due to being more widely used and known in comparison to a functional programming language such as Haskell, in spite of not utilizing the more well-known object-oriented aspect of C++, it is capable of compiling at a greater rate than Haskell. Because of this, I was also curious about whether an Object-Oriented variation of Smart Contracts could potentially achieve similar success to the DSL variant as even though it would likely take longer to compile, is an abstraction method a lot more familiar among software engineers. In addition to this, an Object-Oriented variation of Smart Contracts could potentially be easier to extend in the event of Smart Contracts becoming increasingly more complex.
+\\
+\pagebreak
 \subsection{Week 12}
 The objective of this week's homework is to apply Hoare Logic to a given function.
-\\
-\\
-Given the equation: while (x!=0) do z:=z*y;  x:= x-1 done...
-\\
-Program variables: \textit{x}, \textit{y}, and \textit{z}
-\\
-Mathematical variables: \textit{m}, \textit{n}, and \textit{k}
+\textbf{Given the equation: while (x!=0) do z:=z*y;  x:= x-1 done...} \\
+\includegraphics[width=18cm, height=18cm]{Report Images/week12_2.jpg}
 \\
 \\ \includegraphics[width=18cm, height=20cm]{Report Images/week12.jpg}
 
@@ -690,9 +679,60 @@ For my project in Programming Languages (Fall 2022), I intend on performing data
     \item Write report for the analysis of the data set itself, explaining the process of selecting which model(s) to accept, reject, or if any model provided any surprising results about the data set in addition to providing a response to each of the questions created from \textbf{step 4}. A rough draft of this report should be submitted and present within the "Documentation" subsection of \textit{report.tex}
 \end{enumerate}
 \subsection{Prototype}
+\textbf{Project Milestones}
+\begin{enumerate}
+    \item By \textbf{November 5, 2022}, email Dr. Kurtz the questions regarding the Programming Languages GitHub Data for the report, as well as the Excel sheet based on the data found from Githut.info.
+    \begin{itemize}
+        \item There should at least be \textbf{three} data analysis-related questions.
+        \item The questions should relate to different types of statistical models, or involve the modification of a previously used statistical model using another data analysis technique.
+        \item The questions should have some relation to the nature or ask for some conclusion about Programming Languages based on the resulting statistical model.
+        \item This can alternatively be found uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
+    \end{itemize}
+    \item By \textbf{November 30, 2022}, create the statistical models associated for each of the questions.
+    \begin{itemize}
+        \item This will be accomplished via Google Colab
+        \item The code and associated models for each of the statistical models should be included within the \textbf{Prototype} subsection of this report.
+        \item Justifications for certain choices when generating the models (i.e. selecting a specific clustering methods or selecting which variables should be excluded from a revised model) should be also included alongside the code for the statistical models as comments.
+        \item The Colab Notebook and a PDF of the compiled Notebook containing the statistical models should be uploaded to the \textit{Programming Languages Project Documents} folder on GitHub.
+    \end{itemize}
+    \item By \textbf{December 7, 2022}, have a rough draft of the responses to each of the questions for this report.
+    \begin{itemize}
+        \item This can be either written in a Word Document uploaded to the \textit{Programming Languages Project Documents} folder on GitHub or written directly to the \textbf{Documentation} section of this report.
+        \item The responses to each of the questions, while still answering the questions, should contain a clear connection and come to a conclusion about trends and observations that can be made regarding the Programming Languages data.
+        \item Justifications for decisions made regarding why certain modelling techniques or variables get excluded should also be reiterated within the report.
+    \end{itemize}
+\end{enumerate}
+Link to the Jupyter Notebook containing the project itself: \href{https://colab.research.google.com/drive/1GuQKes41aCcwipScQs1ERPh6Ch4_szIW?usp=sharing}{GitHut Programming Languages Notebook}
 \subsection{Documentation}
+The dataset used for this project comes from \cite{GT} GitHut, a website designed with the intention of visualizing the data regarding the different Programming Languages associated with the various repositories of users on \cite{GH} GitHub. Although attempting to retrieve data from GitHub in general tends to be a difficult task, even according to some studies \cite{MS} not even appropriate for a task in spite of the data being relevant to a desired task at hand, there are still examples of studies and projects that have used GitHut data for analysis or visualization of that data. For instance, one particular study \cite{AA} used GitHub data regarding commits to and the contributors of Android App repositories in addition to download and review data from the Google Play store in order to create a visual connecting the two. Another study \cite{GD} had formed a dataset containing clones, copies of GitHub repositories that users can make their own personal modifications to, in addition to the original parent repository of the clones in order to study how cloned data can affect the performance of machine learning algorithms. Meanwhile, outside of repositories, other data from GitHub has been used in some projects, such as a recent article \cite{PP} where the objective was to create an algorithm that would recommend users potential partners to work with based on their recent activity on GitHub. Because of this, using the \cite{GT} GitHut data, I wanted to perform data analysis on the various Programming Languages statistics recorded on the site.
+\\
+\\
+\indent Performing Linear Regression on each of the variables to predict the year in which a particular Programming Language on GitHub was released resulted in Linear Regression Models with similar R2 scores for the data used to train the models, but excluding the \textit{Opened Issues Per Repository} variable from the Linear Regression model resulted in an overall improvement in the testing R2 score and Mean Squared Error score. Conversely, removing the \textit{New Watchers Per Repository} from the Linear Regression resulted in an overall worse R2 and Mean Squared Error score for both the training and testing dataset. This had shown that while the former was overall not very indicative of a Programming Language's characteristics, the latter variable had a significant impact in identifying such Programming Languages. Performing Clustering on the dataset based on the \textit{Open Issues Per Repository} and \textit{New Watchers Per Repository} resulted in a Cluster in both the DBSCAN Clustering and Hierarchical Clustering Methods consisting of Programming Languages with that fell around the average for both variables. In the case of the DBSCAN method, the "noise" points were any Programming Language that were extreme outliers in either variable, while the Hierarchical Method had two separate clusters relating to the extreme ends for both of the variables. Finally, though both the LASSO Feature Reduction methods had resulted in worse performance than the Linear Regression model containing all of the variables from GitHut, the manual method of LASSO had reconfirmed the results of the initial Linear Regression model testing in that the \textit{New Watchers Per Repository} variable was the most significant variable in terms of identifying the characteristics of a particular Programming Language.
 \subsection{Critical Appraisal}
-
+\begin{itemize}
+    \item Like the conclusions of some of the studies regarding the feasibility of GitHub data \cite{MS}, the GitHut dataset may not have been the best choice of data to form a narrative about, despite being most related to Programming Languages.
+    \begin{itemize}
+        \item It was overall very difficult to draw conclusions from purely numerical data without any categorical variables or significantly personal connections, such as when I had previously performed Data Analysis on an Unemployment and Mental Health dataset \cite{MH}.
+    \end{itemize}
+    \item Overall, one of the major limiting factors on the technical end of this project was attempting to perform all of the Data Science techniques and models for such a small dataset, as focusing on one particular quarter of the GitHut data only provided 30 data entries, which severely limited the amount of data that could be used to train and test the models
+    \begin{itemize}
+        \item A potential way to alleviate this in a future revisit of this project would be to record the GitHut data from the previous quarters in order to have more data to work with.
+        \begin{itemize}
+            \item From here, another potential way to tackle this dataset would to be observe how the rankings for each of the statistics on GitHub have changed over time (ie a particular Programming Language picking up popularity among users on GitHub would suddenly have the highest \textit{New Watchers Per Repository} or \textit{Active Repositories} value during a more recent quarter when it originally had a smaller value in both variables.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
 \section{Conclusions}\label{Conclusions}
-\dots
+\indent Without getting too deep in terms of detail, I would say that this course was overall important in that it gave insight into the various aspects of what goes into creating a programming language that we generally take for granted. In comparison to courses such as intro to Computer Science, where Chapman students learn how to program in Python, this course had the objective of having students understand the purpose and reasoning behind why some aspects of programming languages, such as specific things like spacing or grammar for example, can cause errors when attempting to compile that particular program. It was overall interesting to see the potential ways an individual who creates their own programming language can define the grammar of their language, as we have seen in both the Lambda Natural Numbers (Assignment 2) and Lambda Fun (Assignment 3) in class through the Lambda Calculus (.lc)  language that was used for those programming assignments. In addition to the logic behind front end aspects of programming languages such as syntax and grammar, the course was also significant in that it also taught us about aspects of computation such as the logic behind relatively basic concepts such as calculators (as we had covered this leading up to and during the Natural Number Calculator (Assignment 1) programming assignment) to more higher-level concepts such as the invariant of operations and functions. I would say that this particular aspect of the course relates the most to the wider world of software engineering as it relates more to the design and logic behind potential software that software engineers may need to decide on in the event that they attempt to improve upon what currently exists within the scope of computation or if they decide to create their own programming language in order to accomplish a specific goal such as protecting their intellectual secrets or to find a way to have their desired product run concisely without the unnecessary aspects of other programming languages.
+\\
+\indent In terms of learning Haskell throughout the course, it was interesting to learn about purely functional programming languages and the concept of pattern matching in place of simply having several if-then-else statements like we would typically use in other programming languages. Learning about functional programming languages relates to the wider world of software engineering as we have seen applications of using Haskell to create a Domain Specific Language specifically in the financial field in regard to creating contracts. In other words, it provided insight into understanding how to potentially create Domain Specific Languages for other fields and specific constructs.
+\begin{thebibliography}{99}
+\bibitem[AA]{AA} \href{https://dl.acm.org/doi/abs/10.1145/3196398.3196460}{A graph-based dataset of commit history of real-world Android apps}, Geiger et al. 2018.
+\bibitem[GD]{GD} \href{https://dl.acm.org/doi/abs/10.1145/3379597.3387496}{A Dataset for GitHub Repository Deduplication}, Spinellis et al. 2020.
+\bibitem[GH]{GH} \href{https://github.com}{GitHub}, GitHub, Inc. 2022.
+\bibitem[GT]{GT} \href{githut.info}{GitHut}, Carlo Zapponi 2014.
+\bibitem[MH]{MH} \href{https://www.kaggle.com/datasets/michaelacorley/unemployment-and-mental-illness-survey}{Unemployment and mental illness survey}, Corley, 2019.
+\bibitem[MS]{MS} \href{https://gousios.org/pub/mining-soft-eng-data-github.pdf}{Mining Software Engineering Data from GitHub}, Gousios and Spinellis, 2017.
+\bibitem[PP]{PP} \href{https://www.sciencedirect.com/science/article/abs/pii/S0950584922001033}{Find potential partners: A GitHub user recommendation method based on event data}, Bai et al. 2022.
+\end{thebibliography}
 \end{document}
